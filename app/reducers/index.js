@@ -1,17 +1,6 @@
 import {combineReducers} from 'redux'
+import {cards} from './cards'
+import {players} from './players'
 
-const initState = {card: '5c'}
 
-const cards = (state = initState, action) => {
-	debugger
-	switch(action.type) {
-		case 'GET':
-			let newState = Object.assign({}, state);
-			newState.card= action.data
-			return newState
-		default:
-			return state
-	}
-}
-
-export default combineReducers({cards})
+export default combineReducers({cards, players})

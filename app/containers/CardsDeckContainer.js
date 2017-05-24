@@ -17,7 +17,10 @@ const CardsDeckContainer = ({onNewCardButtonClick, onAddCardButtonClick, card}) 
 
 const mapStateToProps = state => {
 	debugger
-	return {card: state.cards.card}
+	return {
+		card: state.cards.card,
+		player: state.players.player
+	}
 }
 
 const mapDispatchToProps = dispatch => {
