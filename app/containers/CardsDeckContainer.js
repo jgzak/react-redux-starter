@@ -1,32 +1,37 @@
 import React from 'React'
 import {connect} from 'react-redux'
-import {getRandomCard} from '../actions'
+import {getRandomCard, getAsyncRandomCard} from '../actions'
+import {CardsInHands} from '../components/CardsInHands.jsx'
+import {Card} from '../components/Card.jsx'
 
-let onButtonClick;
-const CardsDeckContainer = ({onNewCardButtonClick, onAddCardButtonClick, card}) => {
-	debugger
+const CardsDeckContainer = ({
+							onNewCardButtonClick, 
+							onPlayButtonClick, 
+							cardsInHands
+						}) => 
+{
 	return (<div>
-				<div>{card}</div>
+				<CardsInHands>{cardsInHands.map(card => (<Card key={card.key} value={card.index}></Card>))}
+				</CardsInHands>
 				<div>
 					<button type="button" onClick={onNewCardButtonClick}>New Card</button>
-					<button type="button" onClick={onAddCardButtonClick}>Add Card</button>
+					<button type="button" onClick={onPlayButtonClick}>Play</button>
 				</div>
 			</div>)	
 }
 	
 
 const mapStateToProps = state => {
-	debugger
 	return {
-		card: state.cards.card,
-		player: state.players.player
+		cardsInHands: state.cardsInHands,
+		cardsInDeck: state.cardsInDeck,
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
 		onNewCardButtonClick: () => dispatch(getRandomCard()),
-		onAddCardButtonClick: () => dispatch(getRandomCard())
+		onPlayButtonClick: () => dispatch(getAsyncRandomCard())
 	}
 }
 

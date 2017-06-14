@@ -9,7 +9,7 @@ module.exports = {
   },
   devServer: {
     hot: true,
-    port: 9004,
+    port: 9090,
     watchContentBase: true,
     lazy: false,
     headers: {
